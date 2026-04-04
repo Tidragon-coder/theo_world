@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/public/css/main.css">
+
 <div class="users form content">
     <?= $this->Flash->render() ?>
     <h3>Login</h3>

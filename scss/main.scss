@@ -1,0 +1,23 @@
+$primary: #3498db;
+$font-size: 16px;
+
+body {
+    font-size: $font-size;
+    background: #f5f5f5;
+}
+
+nav {
+    background: $primary;
+
+    ul {
+        list-style: none;
+
+        li a {
+            color: white;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
