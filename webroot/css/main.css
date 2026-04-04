@@ -1,0 +1,66 @@
+body {
+  font-size: 16px;
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #7c3aed;
+  text-align: center;
+  margin: 0;
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.games .game1 {
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 10px;
+  width: 80%;
+  text-align: center;
+  color: #e6edf3;
+}
+.games .game1 h2 {
+  color: #00e7ff;
+  font-weight: 700;
+  font-size: 25.6px;
+  margin: 0 0 10px 0;
+}
+.games .game1 p {
+  font-size: 16px;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
+}
+.games .game1 button {
+  background: linear-gradient(135deg, #7c3aed, #00e7ff);
+  color: #e6edf3;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.games .game1 button:hover {
+  opacity: 0.9;
+}
+
+nav {
+  background: linear-gradient(135deg, #7c3aed, #00e7ff);
+}
+nav ul {
+  list-style: none;
+}
+nav ul li a {
+  color: #e6edf3;
+}
+nav ul li a:hover {
+  opacity: 0.8;
+}
+
+/*# sourceMappingURL=main.css.map */

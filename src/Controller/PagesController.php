@@ -61,6 +61,12 @@ class PagesController extends AppController
         }
         $this->set(compact('page', 'subpage'));
 
+        if ($page === 'home') {
+            $this->loadModel('Boardgames');
+            $boardgames = $this->Boardgames->find()->all();
+            $this->set(compact('boardgames'));
+        }
+
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
