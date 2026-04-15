@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration.
  *
@@ -29,6 +30,7 @@ use Cake\Routing\RouteBuilder;
  * So you can use `$this` to reference the application class instance
  * if required.
  */
+
 return function (RouteBuilder $routes): void {
     /*
      * The default class to use for all routes
@@ -56,6 +58,18 @@ return function (RouteBuilder $routes): void {
          * to use (in this case, templates/Pages/home.php)...
          */
         $builder->connect('/', ['controller' => 'Boardgames', 'action' => 'index']);
+
+        $builder->connect(
+            '/play/mastermind/{gameId}',
+            ['controller' => 'Sessiongames', 'action' => 'createFromGame'],
+            ['pass' => ['gameId'], 'gameId' => '\d+', '_name' => 'play:mastermind']
+        );
+
+        $builder->connect(
+            '/mastermindsettings/create/{sessionId}',
+            ['controller' => 'Mastermindsettings', 'action' => 'createForSession'],
+            ['pass' => ['sessionId'], 'sessionId' => '\d+']
+        );
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.

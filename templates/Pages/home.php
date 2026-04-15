@@ -6,10 +6,14 @@
 <div class="games">
     <?php foreach ($boardgames as $game): ?>
         <div class="game1">
-            <h2><?= h($game->name) ?></h2>
+            <h2><?= h($game->name) ?> || ID :<?= h($game->id) ?></h2>
             <p><?= h($game->description) ?></p>
             <button>
-                <?= $this->Html->link('Jouer', ['controller' => 'Usersessiongame', 'action' => 'edit', $game->id]) ?>
+                <?= $this->Html->link(
+                    'Jouer',
+                    ['_name' => 'play:mastermind', 'gameId' => $game->id],
+                    ['escapeTitle' => false]
+                ) ?>
             </button>
         </div>
     <?php endforeach; ?>
