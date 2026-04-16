@@ -65,6 +65,32 @@ return function (RouteBuilder $routes): void {
             ['pass' => ['gameId'], 'gameId' => '\d+', '_name' => 'play:mastermind']
         );
 
+        // Filler: route to create a session from a boardgame id
+        $builder->connect(
+            '/play/filler/{gameId}',
+            ['controller' => 'Sessiongames', 'action' => 'createFromGame'],
+            ['pass' => ['gameId'], 'gameId' => '\d+', '_name' => 'play:filler']
+        );
+
+        // Fillersettings routes (create settings for a session, play and submit a guess)
+        $builder->connect(
+            '/fillersettings/create/{sessionId}',
+            ['controller' => 'Fillersettings', 'action' => 'createForSession'],
+            ['pass' => ['sessionId'], 'sessionId' => '\d+', '_name' => 'filler:create']
+        );
+
+        $builder->connect(
+            '/filler/play/{sessionId}',
+            ['controller' => 'Fillersettings', 'action' => 'play'],
+            ['pass' => ['sessionId'], 'sessionId' => '\d+', '_name' => 'filler:play']
+        );
+
+        $builder->connect(
+            '/filler/play/{sessionId}/guess',
+            ['controller' => 'Fillersettings', 'action' => 'addStep'],
+            ['pass' => ['sessionId'],'sessionId' => '\d+','_method' => 'POST','_name' => 'filler:addStep']
+        );
+
         $builder->connect(
             '/mes-parties-en-cours',
             ['controller' => 'Sessiongames', 'action' => 'myCurrentGames'],

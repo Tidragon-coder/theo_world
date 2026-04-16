@@ -27,6 +27,25 @@ class MastermindsettingsController extends AppController
 
     public function play(int $sessionId)
     {
+        $identity = $this->request->getAttribute('identity');
+        if ($identity === null) {
+            return $this->redirect('/');
+        }
+
+        $userId = (int)$identity->getIdentifier();
+        $usersessiongameTable = $this->fetchTable('Usersessiongame');
+        $userSession = $usersessiongameTable
+            ->find()
+            ->where([
+                'user_id' => $userId,
+                'sessiongame_id' => $sessionId,
+            ])
+            ->first();
+
+        if ($userSession === null) {
+            return $this->redirect('/');
+        }
+
         $setting = $this->Mastermindsettings
             ->find()
             ->contain(['Sessiongames'])
@@ -34,7 +53,10 @@ class MastermindsettingsController extends AppController
             ->first();
 
         if ($setting === null) {
-            throw new NotFoundException('Parametres introuvables pour cette session.');
+            // If settings do not exist yet, create them and redirect to createForSession
+            $this->Flash->info('Parametres manquants — creation des parametres de jeu.');
+
+            return $this->redirect(['action' => 'createForSession', $sessionId]);
         }
 
         $steps = json_decode((string)$setting->steps, true);
@@ -47,6 +69,25 @@ class MastermindsettingsController extends AppController
 
     public function addStep(int $sessionId)
     {
+        $identity = $this->request->getAttribute('identity');
+        if ($identity === null) {
+            return $this->redirect('/');
+        }
+
+        $userId = (int)$identity->getIdentifier();
+        $usersessiongameTable = $this->fetchTable('Usersessiongame');
+        $userSession = $usersessiongameTable
+            ->find()
+            ->where([
+                'user_id' => $userId,
+                'sessiongame_id' => $sessionId,
+            ])
+            ->first();
+
+        if ($userSession === null) {
+            return $this->redirect('/');
+        }
+
         $this->request->allowMethod(['post']);
 
         $values = [

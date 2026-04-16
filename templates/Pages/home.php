@@ -9,11 +9,7 @@
             <h2><?= h($game->name) ?> || ID :<?= h($game->id) ?></h2>
             <p><?= h($game->description) ?></p>
             <button>
-                <?= $this->Html->link(
-                    'Jouer',
-                    ['_name' => 'play:mastermind', 'gameId' => $game->id],
-                    ['escapeTitle' => false]
-                ) ?>
+                <?= $this->Html->link('Jouer', ['controller' => 'Sessiongames', 'action' => 'createFromGame', $game->id], ['escapeTitle' => false]) ?>
             </button>
         </div>
     <?php endforeach; ?>
@@ -28,7 +24,14 @@
                     <li>
                         <?= h($entry->sessiongame->boardgame->name ?? 'Jeu') ?>
                         - Session #<?= h($entry->sessiongame_id) ?>
-                        - <?= $this->Html->link('Reprendre', ['_name' => 'mastermind:play', 'sessionId' => $entry->sessiongame_id]) ?>
+                        - <?php
+                            $isFiller = (isset($entry->sessiongame->boardgame->name) && strtolower($entry->sessiongame->boardgame->name) === 'filler');
+                            if ($isFiller) {
+                                echo $this->Html->link('Reprendre', ['controller' => 'Fillersettings', 'action' => 'play', $entry->sessiongame_id]);
+                            } else {
+                                echo $this->Html->link('Reprendre', ['controller' => 'Mastermindsettings', 'action' => 'play', $entry->sessiongame_id]);
+                            }
+                            ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
