@@ -40,6 +40,28 @@ h1 {
             color: $text-muted;
             margin: 0 0 16px 0;
         }
+
+        .circle {
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            background-color: currentColor;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 0 6px 6px 0;
+        }
+
+        /* utility color classes for circles (apply inside .game1) */
+        .red { color: #ef4444; }
+        .blue { color: #3b82f6; }
+        .green { color: #10b981; }
+        .yellow { color: #fbbf24; }
+        .purple { color: #8b5cf6; }
+        .orange { color: #f97316; }
+        .pink { color: #ec4899; }
+        .black { color: #000000; }
+        .gray { color: #9ca3af; }
+
         button {
             background: linear-gradient(135deg, $accent-primary, $accent-secondary);
             color: $text-main;
@@ -51,6 +73,90 @@ h1 {
             &:hover {
                 opacity: 0.9;
             }
+        }
+
+        .selector {
+            form {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-end;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .input {
+                margin: 0;
+                min-width: 140px;
+            }
+
+            button {
+                margin: 0;
+            }
+        }
+
+        .essais {
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            li {
+                margin-bottom: 6px;
+                color: $text-main;
+            }
+
+            .good,
+            .bad,
+            .none {
+                width: 12px;
+                height: 12px;
+                display: inline-block;
+                border-radius: 50%;
+                margin: 0 4px 10px 0;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+            }
+
+            .good {
+                background: #22c55e;
+            }
+
+            .bad {
+                background: #f59e0b;
+            }
+
+            .none {
+                background: transparent;
+            }
+
+            /* layout for guess + result */
+            .guess-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .guess {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .result-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 12px);
+                gap: 6px;
+                margin-left: 6px;
+            }
+
+            .game-over {
+
+                .code-label{
+                    color : white
+                }
+            }
+
+
         }
     }
 }

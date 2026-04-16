@@ -5,6 +5,33 @@ namespace App\Controller;
 
 class SessiongamesController extends AppController
 {
+    public function myCurrentGames()
+    {
+        $identity = $this->request->getAttribute('identity');
+        if ($identity === null) {
+            $this->Flash->error('Vous devez etre connecte pour voir vos parties.');
+
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+        }
+
+        $userId = (int)$identity->getIdentifier();
+        $usersessiongameTable = $this->fetchTable('Usersessiongame');
+
+        $entries = $usersessiongameTable
+            ->find()
+            ->contain([
+                'Sessiongames' => ['Boardgames'],
+            ])
+            ->where([
+                'Usersessiongame.user_id' => $userId,
+                'Sessiongames.is_finish' => false,
+            ])
+            ->orderByDesc('Usersessiongame.id')
+            ->all();
+
+        $this->set(compact('entries'));
+    }
+
     public function createFromGame(int $gameId)
     {
         $identity = $this->request->getAttribute('identity');

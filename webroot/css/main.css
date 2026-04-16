@@ -38,6 +38,15 @@ h1 {
   color: #94a3b8;
   margin: 0 0 16px 0;
 }
+.games .game1 .circle {
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  background-color: currentColor;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin: 0 6px 6px 0;
+}
 .games .game1 button {
   background: linear-gradient(135deg, #7c3aed, #00e7ff);
   color: #e6edf3;
@@ -48,6 +57,97 @@ h1 {
 }
 .games .game1 button:hover {
   opacity: 0.9;
+}
+.games .game1 .selector form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+}
+.games .game1 .selector .input {
+  margin: 0;
+  min-width: 140px;
+}
+.games .game1 .selector button {
+  margin: 0;
+}
+.games .game1 .essais ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.games .game1 .essais li {
+  margin-bottom: 6px;
+  color: #e6edf3;
+}
+.games .game1 .essais .good,
+.games .game1 .essais .bad,
+.games .game1 .essais .none {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 4px 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.games .game1 .essais .good {
+  background: #22c55e;
+}
+.games .game1 .essais .bad {
+  background: #f59e0b;
+}
+.games .game1 .essais .none {
+  background: transparent;
+}
+.games .game1 .essais {
+  /* layout for guess + result */
+}
+.games .game1 .essais .guess-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.games .game1 .essais .guess {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.games .game1 .essais .result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 12px);
+  gap: 6px;
+  margin-left: 6px;
+}
+.games .game1 .essais {
+  /* utility color classes for circles */
+}
+.games .game1 .essais .red {
+  color: red;
+}
+.games .game1 .essais .blue {
+  color: blue;
+}
+.games .game1 .essais .green {
+  color: green;
+}
+.games .game1 .essais .yellow {
+  color: yellow;
+}
+.games .game1 .essais .purple {
+  color: purple;
+}
+.games .game1 .essais .orange {
+  color: orange;
+}
+.games .game1 .essais .pink {
+  color: pink;
+}
+.games .game1 .essais .black {
+  color: black;
+}
+.games .game1 .essais .gray {
+  color: gray;
 }
 
 nav {

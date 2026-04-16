@@ -66,9 +66,27 @@ return function (RouteBuilder $routes): void {
         );
 
         $builder->connect(
+            '/mes-parties-en-cours',
+            ['controller' => 'Sessiongames', 'action' => 'myCurrentGames'],
+            ['_name' => 'sessiongames:current']
+        );
+
+        $builder->connect(
             '/mastermindsettings/create/{sessionId}',
             ['controller' => 'Mastermindsettings', 'action' => 'createForSession'],
             ['pass' => ['sessionId'], 'sessionId' => '\d+']
+        );
+
+        $builder->connect(
+            '/mastermind/play/{sessionId}',
+            ['controller' => 'Mastermindsettings', 'action' => 'play'],
+            ['pass' => ['sessionId'], 'sessionId' => '\d+', '_name' => 'mastermind:play']
+        );
+
+        $builder->connect(
+            '/mastermind/play/{sessionId}/guess',
+            ['controller' => 'Mastermindsettings', 'action' => 'addStep'],
+            ['pass' => ['sessionId'],'sessionId' => '\d+','_method' => 'POST','_name' => 'mastermind:addStep']
         );
 
         /*

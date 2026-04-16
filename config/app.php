@@ -418,6 +418,11 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+        'timeout' => 2880,
+        'ini' => [
+            'session.gc_maxlifetime' => 172800,
+            'session.cookie_lifetime' => 172800,
+        ],
     ],
 
     /**
